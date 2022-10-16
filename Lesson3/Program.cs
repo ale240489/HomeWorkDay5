@@ -1,26 +1,26 @@
 ﻿// Задайте массив вещественных чисел. Найдите разницу между макс и мин элементов массива.
 //[3 7 22 2 78] -> 76
-int[] GetArray(int length)
+double[] GetArray(int length)
 {
     Random rnd = new Random();
-    int [] array = new int[length];
+    double [] array = new double[length];
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = rnd.Next(1,30);
+        array[i] = Math.Round((rnd.NextDouble()*(10-2)+2),2);
     }
     return array;
 }
 
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {
     for(int i = 0; i < array.Length; i++)
         Console.Write($"{array[i]} ");
 }
 
-int DifferenceMaxMin(int[] array)
+double DifferenceMaxMin(double[] array)
 {
-    int max = array[0];
-    int min = array[0];
+    double max = array[0];
+    double min = array[0];
     for(int i = 0; i < array.Length; i++)
     {
         if(array[i] > max)
@@ -28,15 +28,15 @@ int DifferenceMaxMin(int[] array)
         if(array[i] < min)
             min = array[i];
     }
-    int difference = max-min;
+    double difference = Math.Round((max-min),2);
     return difference;
 }
 
 Console.WriteLine("Введите длинну массива");
 int length = int.Parse(Console.ReadLine());
-int[] array = GetArray(length);
+double[] array = GetArray(length);
 PrintArray(array);
-int diffOfMaxMin = DifferenceMaxMin(array);
+double diffOfMaxMin = DifferenceMaxMin(array);
 Console.WriteLine();
 Console.Write($"Разница между макc и мин значениями в массиве = {diffOfMaxMin}");
 
